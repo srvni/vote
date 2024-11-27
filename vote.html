@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electronic Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 90%;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Voting System</h1>
+        <h2>Register/Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Enter Username" required><br>
+            <input type="password" id="password" placeholder="Enter Password" required><br>
+            <button type="submit">Login/Register</button>
+        </form>
+
+        <div id="voteSection" style="display:none;">
+            <h2>Cast Your Vote</h2>
+            <form id="voteForm">
+                <input type="radio" id="JMR" name="candidate" value="JMR" required>
+                <label for="JMR">JMR</label><br>
+                <input type="radio" id="CBN" name="candidate" value="CBN">
+                <label  for="CBN">CBN</label><br>
+<input type="radio" id="PSPK" name="candidate" value="PSPK">
+<label for ="PSPK">PSPK</label><br><br>
+                <button type="submit">Submit Vote</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login/Register successful!');
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('voteSection').style.display = 'block';
+        });
+
+        document.getElementById('voteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedCandidate = document.querySelector('input[name="candidate"]:checked').value;
+            alert('Thank you for voting for ' + selectedCandidate + '!');
+        });
+    </script>
+</body>
+</html>
